@@ -2,8 +2,7 @@
 // Features to add: interactive map, weather API, crew management, accessibility enhancements
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Placeholder for map
-    document.getElementById('map').innerText = 'Map will load here.';
+    // Remove placeholder for map, as iframe is now in HTML
     // Placeholder for weather
     document.getElementById('weather').innerText = 'Weather info will appear here.';
     // Placeholder for crew
