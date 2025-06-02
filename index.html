@@ -12,35 +12,66 @@
         <p>Rally your crew, track weather, and hit the next beach cleanup!</p>
     </header>
     <main>
-        <section id="map-section" class="mb-4">
-            <h2 class="mb-3">Find a Cleanup</h2>
-            <div class="card h-100 shadow-sm border-0" style="border-radius: 22px;">
-                <div class="card-body p-4">
-                    <iframe
+        <section id="home-section">
+            <h2>ShoreSquad <span class="beach-emoji">🏝️</span></h2>
+            <p>Welcome to ShoreSquad! Rally your crew, track weather, and hit the next beach cleanup. Eco-action made fun for everyone, lah!</p>
+        </section>
+        <section id="campaign-section">
+            <h2>Beach Cleanup Campaigns <span class="beach-emoji">🏖️</span></h2>
+            <div id="campaign-list"><!-- Campaigns rendered by JS --></div>
+        </section>
+        <section id="impact-section">
+            <h2>Impact Tracker <span class="beach-emoji">🦀</span></h2>
+            <div id="impact"></div>
+        </section>
+        <section id="crew-section">
+            <h2>Your Crew <span class="beach-emoji">🧢</span></h2>
+            <div id="crew"></div>
+        </section>
+        <section id="map-section">
+            <h2 class="mb-3">Find a Cleanup <span class="beach-emoji">🌊</span></h2>
+            <div class="card h-100 shadow-sm border-0" style="border-radius: 22px; width:100%; max-width:700px; margin:0 auto;">
+                <div class="card-body p-4" style="padding:0;">
+                    <iframe 
                         src="https://maps.google.com/maps?q=1.381497,103.955574&z=16&output=embed"
-                        width="100%"
-                        height="400"
-                        style="border:0; border-radius: 12px;"
-                        allowfullscreen=""
-                        loading="lazy"
+                        width="100%" 
+                        height="220" 
+                        style="border:0; border-radius: 12px; min-height:120px; max-width:100%; display:block; background:#fff;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
-                    <div style="margin-top:0.5rem; font-size:0.95rem; color:#0077b6; font-weight:bold;">Next Cleanup: Pasir Ris (Street View Asia)</div>
+                    <div style="margin-top:0.5rem; font-size:1.1rem; color:#0077b6; font-weight:bold; text-align:center;">Next Cleanup: Pasir Ris (Street View Asia)</div>
                 </div>
             </div>
         </section>
         <section id="weather-section">
-            <h2>Weather Tracker</h2>
+            <h2>Weather Tracker <span class="beach-emoji">☀️</span></h2>
             <div id="weather"></div>
         </section>
-        <section id="crew-section">
-            <h2>Your Crew</h2>
-            <div id="crew"></div>
-        </section>
     </main>
+    <!-- Tawk.to chat widget -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5e5a1b2ea89cda5a1888b7b2/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
     <footer>
         <p>&copy; 2025 ShoreSquad. Eco-action made fun!</p>
     </footer>
+    <nav class="bottom-nav">
+      <a href="#home-section" class="nav-item active"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></a>
+      <a href="#campaign-section" class="nav-item"><span class="nav-icon">📅</span><span class="nav-label">Events</span></a>
+      <a href="#map-section" class="nav-item"><span class="nav-icon">🗺️</span><span class="nav-label">Map</span></a>
+      <a href="#weather-section" class="nav-item"><span class="nav-icon">☀️</span><span class="nav-label">Weather</span></a>
+      <a href="#crew-section" class="nav-item"><span class="nav-icon">🧑‍🤝‍🧑</span><span class="nav-label">Squad</span></a>
+    </nav>
     <script src="js/app.js"></script>
 </body>
 </html>
