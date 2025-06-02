@@ -3,7 +3,7 @@
 
 async function fetchWeather() {
     const weatherDiv = document.getElementById('weather');
-    weatherDiv.innerHTML = '<span>Loading weather forecast...</span>';
+    weatherDiv.innerHTML = '<div class="spinner" title="Loading weather..."></div>';
 
     try {
         // Fetch NEA 2-hour weather forecast
@@ -18,6 +18,7 @@ async function fetchWeather() {
         const tempResp = await fetch('https://api.data.gov.sg/v1/environment/air-temperature');
         const tempData = await tempResp.json();
         let temp = null;
+        let stationName = null;
         if (tempData.items && tempData.items[0] && tempData.items[0].readings) {
             // Try to find the closest station to Pasir Ris by coordinates if 'Pasir Ris' is not in the station list
             const PASIR_RIS_COORDS = { lat: 1.381497, lng: 103.955574 };
@@ -33,25 +34,31 @@ async function fetchWeather() {
                     if (dist < minDist) {
                         minDist = dist;
                         closestReading = reading.value;
+                        stationName = station.name;
                     }
                 }
             }
             if (closestReading !== null) temp = closestReading;
         }
 
+        // Emoji for forecast
+        let emoji = '🌤️';
+        if (/rain|showers|thunder/i.test(forecast)) emoji = '🌧️';
+        else if (/cloud/i.test(forecast)) emoji = '⛅';
+        else if (/fair|clear|sun/i.test(forecast)) emoji = '☀️';
+
         weatherDiv.innerHTML = `
-            <div style="text-align:center;">
-                <div style="font-size:1.3rem;font-weight:bold;">Pasir Ris Weather (Next 2 Hours)</div>
-                <div style="font-size:1.1rem;margin:0.5rem 0;">${forecast}</div>
-                <div style="font-size:1.1rem;margin:0.5rem 0;">
-                    ${temp !== null ? `<span style='font-size:1.5rem;font-weight:bold;'>${temp}&deg;C</span>` : '<span style="color:#888;">Temperature unavailable</span>'}
-                </div>
-                <div style="font-size:0.9rem;color:#0077b6;">Updated: ${new Date(updateTime).toLocaleString()}</div>
-                <div style="font-size:0.85rem;color:#888;">Source: NEA Singapore</div>
+            <div style="width:100%;text-align:center;">
+                <span class="emoji">${emoji}</span>
+                <span class="forecast">${forecast}</span>
+                <div class="temp">${temp !== null ? `${temp}&deg;C` : '<span class="error">Temperature unavailable</span>'}</div>
+                ${stationName ? `<div class="station">Nearest station: ${stationName}</div>` : ''}
+                <div class="updated">Updated: ${new Date(updateTime).toLocaleString()}</div>
+                <div class="source">Source: NEA Singapore</div>
             </div>
         `;
     } catch (e) {
-        weatherDiv.innerHTML = '<span style="color:red;">Unable to load weather data.</span>';
+        weatherDiv.innerHTML = '<div class="error">Unable to load weather data. Please try again later.</div>';
     }
 }
 
