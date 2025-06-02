@@ -64,9 +64,22 @@ async function fetchWeather() {
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchWeather();
-    // Crew placeholder
-    document.getElementById('crew').innerText = 'Your crew info will show here.';
-
+    // Generate random crew info
+    const crewNames = [
+        'Kai', 'Aisyah', 'Lucas', 'Mei', 'Zara', 'Ethan', 'Siti', 'Ryan', 'Jia Wei', 'Priya', 'Dylan', 'Hui Min', 'Amir', 'Samantha', 'Wei Jie'
+    ];
+    const crewRoles = [
+        'Squad Leader', 'Eco Warrior', 'Logistics', 'Photographer', 'First Aid', 'Trash Tracker', 'Motivator', 'Hydration Chief'
+    ];
+    const emojis = ['🌊', '🦀', '🧤', '🧢', '🦑', '🪣', '🧴', '🦜'];
+    function getRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+    const crew = Array.from({length: 4}, () => {
+        const name = getRandom(crewNames);
+        const role = getRandom(crewRoles);
+        const emoji = getRandom(emojis);
+        return `<div><span class='emoji'>${emoji}</span><span class='name'>${name}</span> <span class='role'>${role}</span></div>`;
+    }).join('');
+    document.getElementById('crew').innerHTML = crew;
     // Accessibility: keyboard navigation
     document.body.addEventListener('keydown', (e) => {
         if (e.key === 'Tab') {

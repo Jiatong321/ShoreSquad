@@ -150,15 +150,55 @@ section {
 
 #crew {
     width: 100%;
-    min-height: 80px;
-    background: #ff6f61;
+    min-height: 120px;
+    background: linear-gradient(135deg, #ff6f61 60%, #ffe066 100%);
     color: #fff;
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
     margin-top: 1rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     font-size: 1.2rem;
+    box-shadow: 0 2px 8px rgba(255,111,97,0.08);
+    padding: 1.5rem 1rem 1.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+#crew > div {
+    background: rgba(255,255,255,0.08);
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    box-shadow: 0 1px 4px rgba(255,111,97,0.05);
+    width: 100%;
+    max-width: 350px;
+}
+
+#crew > div:last-child {
+    margin-bottom: 0;
+}
+
+#crew .emoji {
+    font-size: 1.7rem;
+    margin-right: 0.7rem;
+}
+
+#crew .role {
+    font-size: 1rem;
+    color: #ffe066;
+    margin-left: 0.7rem;
+    font-weight: 500;
+}
+
+#crew .name {
+    font-weight: bold;
+    color: #fff;
 }
 
 footer {
