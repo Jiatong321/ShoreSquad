@@ -41,10 +41,20 @@ section {
     flex: 1 1 300px;
 }
 
+.card {
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 4px 16px rgba(34,34,59,0.08);
+    border: none;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
 #map {
     width: 100%;
     min-height: 300px;
-    background: #0077b6 url('https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png') center center no-repeat;
     border-radius: 0.5rem;
     margin-top: 1rem;
     display: flex;
